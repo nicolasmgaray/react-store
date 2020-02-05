@@ -9,7 +9,7 @@ const StyledProductList = styled.div`
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-around;
-  border: 0.1em solid black;
+  padding-top:6em;
 `;
 
 const ProductList = ({ products }) => (

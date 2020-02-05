@@ -1,11 +1,15 @@
 import React from "react";
-import styled from "styled-components";
 import { useSelector } from "react-redux";
+
 import ProductList from "./ProductList";
+import Spinner from "../Spinner";
 
 const ProductListContainer = () => {
-  const productsState = useSelector(state => state.products); 
-  return <ProductList products={productsState.products}></ProductList>;
+  const { fetching, products } = useSelector(state => state.products);
+
+
+  if (fetching) return <Spinner></Spinner>;
+  else return <ProductList products={products}></ProductList>;
 };
 
 export default ProductListContainer;

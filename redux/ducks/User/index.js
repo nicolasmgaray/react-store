@@ -1,55 +1,75 @@
-import apiService from '../../../api';
+import apiService from "../../../api";
 
 const defaultState = {
   id: null,
-  name: '',
+  name: "",
   points: 0,
   history: [],
-  fetching: false,
+  fetching: false
 };
 
 const types = {
-  USER_GET_REQUEST: 'USER/GET_REQUEST',
-  USER_GET_USER_SUCCESS: 'USER/GET_USER_SUCCESS',
-  USER_GET_HISTORY_SUCCESS: 'USER/GET_HISTORY_SUCCESS',
-  USER_ADD_POINTS_SUCCESS: 'USER/ADD_POINTS_SUCCESS',
-  USER_GET_FAILURE: 'USER/GET_FAILURE',
-}
+  USER_GET_REQUEST: "USER/GET_REQUEST",
+  USER_GET_USER_SUCCESS: "USER/GET_USER_SUCCESS",
+  USER_GET_HISTORY_SUCCESS: "USER/GET_HISTORY_SUCCESS",
+  USER_ADD_POINTS_SUCCESS: "USER/ADD_POINTS_SUCCESS",
+  USER_REDEEM_SUCCESS: "USER/REDEEM_SUCCESS",
+  USER_GET_FAILURE: "USER/GET_FAILURE"
+};
 
 const actions = {
-  getUser: () => async (dispatch) => {
+  getUser: () => async dispatch => {
     dispatch({ type: types.USER_GET_REQUEST });
     try {
       const user = await apiService.getUser();
-
       dispatch({ type: types.USER_GET_USER_SUCCESS, payload: user });
       return user;
-    } catch(err) {
-      dispatch({ type: types.USER_GET_FAILURE })
+    } catch (err) {
+      dispatch({ type: types.USER_GET_FAILURE });
+      return err;
     }
   },
-  getHistory: () => async (dispatch) => {
-    dispatch({ type: types.USER_GET_REQUEST});
-    const history = await apiService.getHistory();
-
-    dispatch({ type: types.USER_GET_HISTORY_SUCCESS, payload: history});
-    return history;
-  },
-  addPoints: (pointsToAdd) => async (dispatch) => {
+  redeem: productId => async dispatch => {
     dispatch({ type: types.USER_GET_REQUEST });
-    const points = await apiService.addpoints(pointsToAdd);
-
-    dispatch({ type: types.USER_ADD_POINTS_SUCCESS, payload: points });
+    try {
+      const message = await apiService.redeemProduct(productId);
+      dispatch({ type: types.USER_REDEEM_SUCCESS });
+      return message;
+    } catch (err) {
+      dispatch({ type: types.USER_GET_FAILURE });
+      return err;
+    }
+  },
+  getHistory: () => async dispatch => {
+    dispatch({ type: types.USER_GET_REQUEST });
+    try {
+      const history = await apiService.getHistory();
+      dispatch({ type: types.USER_GET_HISTORY_SUCCESS, payload: history });
+      return history;
+    } catch (err) {
+      dispatch({ type: types.USER_GET_FAILURE });
+      return err;
+    }
+  },
+  addPoints: pointsToAdd => async dispatch => {
+    dispatch({ type: types.USER_GET_REQUEST });
+    try {
+      const points = await apiService.addpoints(pointsToAdd);
+      dispatch({ type: types.USER_ADD_POINTS_SUCCESS, payload: points });
+    } catch (error) {
+      dispatch({ type: types.USER_GET_FAILURE });
+      return err;
+    }
   }
-}
+};
 
 const reducer = (state = defaultState, action) => {
   switch (action.type) {
     case types.USER_GET_REQUEST:
       return {
         ...state,
-        fetching: true,
-      }
+        fetching: true
+      };
     case types.USER_GET_USER_SUCCESS: {
       const { _id: id, name, points, redeemHistory: history } = action.payload;
       return {
@@ -58,28 +78,33 @@ const reducer = (state = defaultState, action) => {
         id,
         name,
         points,
-        history,
+        history
       };
     }
     case types.USER_GET_HISTORY_SUCCESS:
       return {
         ...state,
         fetching: false,
-        history: action.payload,
-      }
+        history: action.payload
+      };
     case types.USER_ADD_POINTS_SUCCESS:
       return {
         ...state,
-        points: action.payload,
-      }
+        points: action.payload
+      };
     case types.USER_GET_FAILURE:
       return {
         ...state,
-        fetching: false,
-      }
+        fetching: false
+      };
+    case types.USER_REDEEM_SUCCESS:
+      return {
+        ...state,
+        fetching: false
+      };
     default:
-      return {...state}
+      return { ...state };
   }
-}
+};
 
 export { defaultState, types, actions, reducer };

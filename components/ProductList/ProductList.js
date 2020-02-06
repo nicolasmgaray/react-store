@@ -9,13 +9,15 @@ const StyledProductList = styled.div`
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-around;
-  padding-top:6em;
+  padding: 0em 3em;
+  background: var(--color-bg-grey);
+  position: relative;
 `;
 
-const ProductList = ({ products }) => (
+const ProductList = ({ products, points }) => (
   <StyledProductList>
     {products.map(x => (
-      <Product key={x._id} {...x}></Product>
+      <Product key={x._id} {...x} points={points}></Product>
     ))}
   </StyledProductList>
 );

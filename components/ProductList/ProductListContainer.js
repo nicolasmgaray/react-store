@@ -5,11 +5,11 @@ import ProductList from "./ProductList";
 import Spinner from "../Spinner";
 
 const ProductListContainer = () => {
-  const { fetching, products } = useSelector(state => state.products);
-
+  const { products: productsStore, user } = useSelector(state => state);
+  const { fetching, products } = productsStore;
 
   if (fetching) return <Spinner></Spinner>;
-  else return <ProductList products={products}></ProductList>;
+  else return <ProductList points={user.points} products={products}></ProductList>;
 };
 
 export default ProductListContainer;

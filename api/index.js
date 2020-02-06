@@ -1,5 +1,7 @@
 import fetch from "isomorphic-unfetch";
 
+const token =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTNiMDg1MTcyMzQ3ODAwNmQ0MTAwOTIiLCJpYXQiOjE1ODA5MjcwNTd9.2bqKPhK_C3YN-h95OMEiuwjQSMkyiLmIZ35TGoYy4o8";
 const baseUrl = "https://aerolab-challenge.now.sh/";
 
 const fetchParams = (method, data = "") => {
@@ -16,8 +18,7 @@ const fetchParams = (method, data = "") => {
 const apiHeaders = {
   "Content-Type": "application/json",
   Accept: "application/json",
-  Authorization:
-    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YTBjOWIxNmU0OTYwMDAwNjBkMDBhNjgiLCJpYXQiOjE1MTA3NzU1NzR9.3RXwYx0ehfQKYZfZ2XRcDr-jbSwmZI50T1l921fbU4E"
+  Authorization: `Bearer ${token}`
 };
 
 class apiService {

@@ -1,28 +1,47 @@
 import React from "react";
 import styled from "styled-components";
+import Spinner from "../Spinner";
 
-const StyledUser = styled.div`
+const User = ({ username, points, addPoints, isAddingPoints }) => (
+  <UserData>
+    {username}
+    <PointCounter>
+      {points}{" "}
+      {isAddingPoints ? <Spinner></Spinner> : <Coin onClick={addPoints} />}
+    </PointCounter>
+  </UserData>
+);
+
+
+const UserData = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
-  text-align:center; 
-  color: var(--color-acento);
-  font-weight:bold;
-  flex-direction: column;
+  color: var(--color-black);
+  font-size: 1.5rem;
   width: auto;
-  min-width: 8em;
-  padding:  0.5em;
+  letter-spacing: -0.15px;
+  line-height: 3rem;
+  white-space: nowrap;
 `;
 
-const StyledRow = styled.div`
-    padding: 0.2em 0em;
-`
+const PointCounter = styled.div`
+  background: #ededed;
+  border-radius: 100px;
+  height: 3rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0em 1em;
+  margin-left: 1em;
+`;
 
-const User = ({ username, points }) => (
-  <StyledUser>
-    <StyledRow>{username}</StyledRow>
-    <StyledRow>Points: {points}</StyledRow>
-  </StyledUser>
-);
+const Coin = styled.img.attrs({
+  src: "/icons/coin.svg",
+  alt: "coin"
+})`
+  height: 60%;
+  cursor: pointer;
+  margin-top: 0.2em;
+`;
 
 export default User;

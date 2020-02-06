@@ -3,8 +3,7 @@ import styled from "styled-components";
 import History from "../History";
 
 const StyledHistoryList = styled.div`
-  padding: 2em;
-  padding-top: 6em;
+  padding: 2em 6em;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

@@ -5,12 +5,12 @@ import HistoryList from "../components/HistoryList";
 import { actions as userActions } from "../redux/ducks/User";
 
 const History = () => (
-  <div>
+  <React.Fragment>
     <Head>
       <title>History</title>
     </Head>
     <HistoryList></HistoryList>
-  </div>
+  </React.Fragment>
 );
 
 History.getInitialProps = async ({ req, reduxStore }) => {

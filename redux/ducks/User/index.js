@@ -29,15 +29,16 @@ const actions = {
       return err;
     }
   },
-  redeem: productId => async dispatch => {
+  redeem: (productId, cost) => async dispatch => {
     dispatch({ type: types.USER_GET_REQUEST });
     try {
-      const message = await apiService.redeemProduct(productId);
-      dispatch({ type: types.USER_REDEEM_SUCCESS });
-      return message;
+      const result = await apiService.redeemProduct(productId);
+      if (result.error) throw result.error;
+      dispatch({ type: types.USER_REDEEM_SUCCESS, payload: cost });
+      return result;
     } catch (err) {
       dispatch({ type: types.USER_GET_FAILURE });
-      return err;
+      throw err;
     }
   },
   getHistory: () => async dispatch => {
@@ -54,8 +55,11 @@ const actions = {
   addPoints: pointsToAdd => async dispatch => {
     dispatch({ type: types.USER_GET_REQUEST });
     try {
-      const points = await apiService.addpoints(pointsToAdd);
-      dispatch({ type: types.USER_ADD_POINTS_SUCCESS, payload: points });
+      const result = await apiService.addpoints(pointsToAdd);
+      dispatch({
+        type: types.USER_ADD_POINTS_SUCCESS,
+        payload: result["New Points"]
+      });
     } catch (error) {
       dispatch({ type: types.USER_GET_FAILURE });
       return err;
@@ -87,21 +91,27 @@ const reducer = (state = defaultState, action) => {
         fetching: false,
         history: action.payload
       };
-    case types.USER_ADD_POINTS_SUCCESS:
+    case types.USER_ADD_POINTS_SUCCESS: {
       return {
         ...state,
         points: action.payload
       };
+    }
+
     case types.USER_GET_FAILURE:
       return {
         ...state,
         fetching: false
       };
-    case types.USER_REDEEM_SUCCESS:
+    case types.USER_REDEEM_SUCCESS: {
+      const newPoints = state.points - action.payload;
       return {
         ...state,
+        points: newPoints,
         fetching: false
       };
+    }
+
     default:
       return { ...state };
   }

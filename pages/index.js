@@ -1,16 +1,18 @@
 import React from "react";
 import Head from "next/head";
 import ProductList from "../components/ProductList";
+import Header from "../components/Header";
 import { actions as productActions } from "../redux/ducks/Products";
 import { actions as userActions } from "../redux/ducks/User";
 
 const Home = () => (
-  <div>
+  <React.Fragment>
     <Head>
       <title>Home</title>
     </Head>
+    <Header />
     <ProductList />
-  </div>
+  </React.Fragment>
 );
 
 Home.getInitialProps = async ({ req, reduxStore }) => {

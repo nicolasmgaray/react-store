@@ -1,14 +1,10 @@
-import React from "react";
 import styled from "styled-components";
 
-const StyledSpinner = styled.div`
-  padding-top: 6em;
+const Spinner = styled.img.attrs({ src: "/icons/spinner.svg" })`
+  height: 90%;
+  width: auto;
+  max-height: 10rem;
+ 
 `;
-
-const Spinner = () => (
-  <StyledSpinner>
-    <div className="loader"></div>
-  </StyledSpinner>
-);
 
 export default Spinner;

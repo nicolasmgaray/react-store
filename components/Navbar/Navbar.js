@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import styled from "styled-components";
-import User from "../User";
+import User from "./User";
 
 const Navbar = ({ links, current }) => (
   <NavbarContainer>

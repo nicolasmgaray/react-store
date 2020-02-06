@@ -11,7 +11,7 @@ const Header = () => (
 const Container = styled.div`
   position: relative;
   color: white;
-
+  font-size: 0.8rem;
   width: 100%;
   border: none;
   margin: 0;
@@ -24,7 +24,7 @@ const HeaderText = styled.div`
   bottom: 0.5em;
   left: 1em;
   font-weight: bold;
-  font-size: 5rem;
+  font-size: 5em;
 `;
 
 const HeaderImage = styled.img.attrs({ src: "/header-x1.png", alt: "Header" })`

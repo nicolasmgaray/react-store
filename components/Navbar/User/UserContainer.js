@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import User from "./User";
 import { useSelector, useDispatch } from "react-redux";
-import { actions } from "../../redux/ducks/User";
+import { actions } from "../../../redux/ducks/User";
 import Swal from "sweetalert2";
 
 const UserContainer = () => {

@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import Ellipse from "../Ellipse";
+import Ellipse from "../../UI/Ellipse";
 
 const Product = ({
   name,
@@ -10,34 +10,51 @@ const Product = ({
   redeem,
   isRedeeming,
   points
-}) => (
-  <Container>
-    {points >= cost ? (
-      <BuyLogo />
-    ) : (
-      <MissingPoints>
-        {`You need ${cost - points} `} <Coin></Coin>
-      </MissingPoints>
-    )}
-    {points >= cost ? (
-      <Hover>
-        <Points>
-          {cost}
-          <Coin></Coin>
-        </Points>
-        <ReedemButton onClick={redeem}>
-          {isRedeeming ? <Ellipse /> : `Redeem Now`}
-        </ReedemButton>
-      </Hover>
-    ) : null}
+}) => {
+  const [isHovered, setHover] = useState(false);
 
-    <ImageContainer>
-      <ProductImage src={img.url} alt={name}></ProductImage>
-    </ImageContainer>
-    <Category>{category}</Category>
-    <ProductName>{name}</ProductName>
-  </Container>
-);
+  return (
+    <Container
+      onMouseEnter={() => {
+        setHover(true);
+      }}
+      onMouseLeave={() => {
+        setHover(false);
+      }}
+    >
+      {points >= cost ? (
+        <BuyLogo
+          src={
+            isHovered || isRedeeming
+              ? "/icons/buy-white.svg"
+              : "/icons/buy-blue.svg"
+          }
+        />
+      ) : (
+        <MissingPoints>
+          {`You need ${cost - points} `} <Coin></Coin>
+        </MissingPoints>
+      )}
+      {(points >= cost && isHovered) || isRedeeming ? (
+        <Hover>
+          <Points>
+            {cost}
+            <Coin></Coin>
+          </Points>
+          <ReedemButton onClick={redeem}>
+            {isRedeeming ? <Ellipse /> : `Redeem Now`}
+          </ReedemButton>
+        </Hover>
+      ) : null}
+
+      <ImageContainer>
+        <ProductImage src={img.url} alt={name}></ProductImage>
+      </ImageContainer>
+      <Category>{category}</Category>
+      <ProductName>{name}</ProductName>
+    </Container>
+  );
+};
 
 const Hover = styled.div`
   position: absolute;
@@ -51,18 +68,15 @@ const Hover = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  visibility: hidden;
 `;
 
-const BuyLogo = styled.div`
+const BuyLogo = styled.img`
   position: absolute;
   z-index: 5;
   right: 1.33em;
   width: 2.62em;
   height: 2.62em;
   top: 1.33em;
-  background-image: url("/icons/buy-blue.svg");
-  background-repeat: no-repeat;
 `;
 
 const Coin = styled.img.attrs({
@@ -70,10 +84,9 @@ const Coin = styled.img.attrs({
   alt: "coin"
 })`
   max-height: 90%;
-  margin-top:0.1em;
-  margin-left:0.2em;
+  margin-top: 0.1em;
+  margin-left: 0.2em;
 `;
-
 
 const Points = styled.div`
   font-size: 2.25em;
@@ -91,7 +104,7 @@ const MissingPoints = styled.div`
   background: #616161;
   border-radius: 100px;
   width: auto;
-  padding:0.4em 1em;
+  padding: 0.4em 1em;
   height: 42px;
   position: absolute;
   right: 1.33em;
@@ -101,7 +114,6 @@ const MissingPoints = styled.div`
   align-items: center;
   justify-content: center;
   white-space: nowrap;
-  
 `;
 
 const ReedemButton = styled.button`
@@ -164,12 +176,6 @@ const Container = styled.div`
   align-items: center;
   transition: all 0.5s;
   box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.1);
-  &:hover > div {
-    visibility: visible;
-  }
-  &:hover > ${BuyLogo} {
-    background-image: url("/icons/buy-white.svg");
-  }
 `;
 
 export default Product;

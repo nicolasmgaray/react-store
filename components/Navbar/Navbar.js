@@ -5,6 +5,7 @@ import User from "../User";
 
 const Navbar = ({ links, current }) => (
   <NavbarContainer>
+    <Logo></Logo>
     <Menu>
       {links.map(({ href, label }) => (
         <StyledLink isCurrent={href == current} key={href}>
@@ -18,6 +19,11 @@ const Navbar = ({ links, current }) => (
   </NavbarContainer>
 );
 
+const Logo = styled.img.attrs({ src: "/icons/cart.svg", alt: "logo" })`
+  height: 3rem;
+  width: auto;
+  color:red;
+`;
 const NavbarContainer = styled.nav`
   position: fixed;
   top: 0;

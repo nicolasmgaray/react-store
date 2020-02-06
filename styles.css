@@ -45,3 +45,10 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+@media (max-width: 600px) {
+  html,
+  body {
+    font-size: 12px;
+  }
+}

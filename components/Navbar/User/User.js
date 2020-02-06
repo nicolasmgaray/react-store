@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import Spinner from "../Spinner";
+import Spinner from "../../UI/Spinner";
 
 const User = ({ username, points, addPoints, isAddingPoints }) => (
   <UserData>
     {username}
     <PointCounter>
-      {points}{" "}
+      {points}
       {isAddingPoints ? <Spinner></Spinner> : <Coin onClick={addPoints} />}
     </PointCounter>
   </UserData>

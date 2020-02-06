@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 import ProductList from "./ProductList";
-import Spinner from "../Spinner";
+import Spinner from "../UI/Spinner";
 
 const ProductListContainer = () => {
   const { products: productsStore, user } = useSelector(state => state);

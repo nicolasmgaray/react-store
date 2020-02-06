@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import HistoryList from "./HistoryList";
-import Spinner from "../Spinner";
+import Spinner from "../UI/Spinner";
 
 const HistoryListContainer = () => {
   const { history, fetching } = useSelector(state => state.user);

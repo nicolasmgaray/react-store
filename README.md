@@ -7,5 +7,24 @@
 
 Small application to achieve the aerolab challenge and demonstrate the SSR capabilities of Next.Js in conjunction with Redux and Redux-Thunk.
 
-- The ZEIT Now deploy is the 'live' server version of the app. (https://reactstore.now.sh)
-- The Netlify deploy is the static generated version of the app.  (https://nextjs-store.netlify.com/)
+# Aerolab Challenge
+
+https://aerolab.co/coding-challenge-instructions
+
+# Api Documentation
+
+https://aerolabchallenge.docs.apiary.io/
+
+# Functionality
+  - You can redeem products by hovering over them, as long as you have enough points
+  - If you don't have enough points, the app will tell you how many more you need to be able to redeem it
+  - Clicking the coin in the points counter will add 1000 points more to your account (Shh! Its a secret)
+  - The history tab will show a list of all the redeemed products.
+  - You can sort the products list.
+
+# Deploys
+
+- Zeit Now: https://reactstore.now.sh ('live' server version of the app)
+- Netlify: https://nextjs-store.netlify.com/ (static generated version of the app)
+
+

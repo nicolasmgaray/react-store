@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Product from "./Product";
+import Product from "./ProductItem";
 import { useDispatch } from "react-redux";
 import { actions } from "../../../redux/ducks/User";
 import Swal from "sweetalert2";

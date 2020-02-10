@@ -1,19 +1,23 @@
 import React from "react";
 import Head from "next/head";
-import ProductList from "../components/ProductList";
+import ProductsList from "../components/ProductsList";
 import Header from "../components/Header";
 import { actions as productActions } from "../redux/ducks/Products";
 import { actions as userActions } from "../redux/ducks/User";
+import ProductsFilter from "../components/ProductsFilter";
 
-const Home = () => (
-  <React.Fragment>
-    <Head>
-      <title>Home</title>
-    </Head>
-    <Header />
-    <ProductList />
-  </React.Fragment>
-);
+const Home = () => {
+  return (
+    <React.Fragment>
+      <Head>
+        <title>Home</title>
+      </Head>
+      <Header />
+      <ProductsFilter />
+      <ProductsList />
+    </React.Fragment>
+  );
+};
 
 Home.getInitialProps = async ({ req, reduxStore }) => {
   const isServer = !!req;

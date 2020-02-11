@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 const ProductContainer = props => {
   const dispatch = useDispatch();
   const [isRedeeming, setRedeeming] = useState(false);
+  const [isHovered, setHover] = useState(false);
   const { redeem } = actions;
 
   const handleRedeem = async () => {
@@ -31,6 +32,8 @@ const ProductContainer = props => {
   return (
     <Product
       redeem={handleRedeem}
+      isHovered={isHovered} 
+      setHover={setHover}
       isRedeeming={isRedeeming}
       {...props}
     ></Product>

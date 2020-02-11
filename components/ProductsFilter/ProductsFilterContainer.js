@@ -5,18 +5,25 @@ import { types } from "../../redux/ducks/Filters";
 const ProductsFilterContainer = () => {
   const { orderBy, searchTerm } = useSelector(state => state.filters);
   const dispatch = useDispatch();
-  console.log(orderBy, searchTerm);
+
+  const sortTypes = [
+    { text: "Most Recent", value: "recent" },
+    { text: "Lowest price", value: "lowest" },
+    { text: "Highest price", value: "highest" }
+  ];
 
   const handleFilterClick = newOrder => () => {
     dispatch({ type: types.FILTERS_UPDATE_ORDER, payload: newOrder });
   };
 
-  const handleNewSearchTerm = newTerm => () => {
+  const handleNewSearchTerm = event => {
+    const newTerm = event.target.value;
     dispatch({ type: types.FILTERS_UPDATE_SEARCH_TERM, payload: newTerm });
   };
 
   return (
     <ProductsFilter
+      sortTypes={sortTypes}
       orderBy={orderBy}
       searchTerm={searchTerm}
       handleFilterClick={handleFilterClick}

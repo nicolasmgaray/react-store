@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, ButtonsContainer, SortLabel } from "../../styles/Filters";
+import { FiltersContainer, ButtonsContainer, SortLabel } from "../../styles/Filters";
 import SortButton from "./SortButton";
 import SearchInput from "./SearchInput";
 
@@ -9,18 +9,18 @@ const ProductsFilter = ({
   sortTypes,
   ...props
 }) => (
-  <Container>
+  <FiltersContainer>
     <SortLabel>Sort By:</SortLabel>
     <ButtonsContainer>
       {sortTypes.map((x, i) => (
-        <SortButton {...x} {...props} />
+        <SortButton key={i} {...x} {...props} />
       ))}
     </ButtonsContainer>
     <SearchInput
       handleNewSearchTerm={handleNewSearchTerm}
       value={searchTerm}
     ></SearchInput>
-  </Container>
+  </FiltersContainer>
 );
 
 export default ProductsFilter;

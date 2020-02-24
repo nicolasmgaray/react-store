@@ -11,10 +11,10 @@ const {
 } = filterFunctions;
 
 const ProductListContainer = () => {
-  const { products: productsStore, user, filters } = useSelector(
+  const { products: productsState, user, filters } = useSelector(
     state => state
   );
-  const { fetching, products } = productsStore;
+  const { fetching, products } = productsState;
 
   let filteredProducts = filterByTerm(products, filters.searchTerm);
 

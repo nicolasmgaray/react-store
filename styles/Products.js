@@ -75,6 +75,7 @@ const MissingPoints = styled.div`
 const ReedemButton = styled.button`
   background: #ffffff;
   width: 228px;
+  max-width:95%;
   height: 42px;
   border-radius: 25px;
   border: none;

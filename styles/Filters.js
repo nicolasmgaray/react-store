@@ -57,7 +57,7 @@ const ButtonsContainer = styled.div`
   flex: 0 1 22em;
 `;
 
-const Container = styled.div`
+const FiltersContainer = styled.div`
   font-size: 1.8rem;
   width: calc(100% - 8em);
   margin: 1em 0em;
@@ -75,7 +75,7 @@ const Container = styled.div`
 `;
 
 export {
-  Container,
+  FiltersContainer,
   ButtonsContainer,
   SortLabel,
   Button,

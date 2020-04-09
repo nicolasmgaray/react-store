@@ -1,5 +1,5 @@
 import React from "react";
-import { Item, Date, ProductImage, Details, Price, Name } from "../../../styles/History";
+import { Item, Date, ProductImage, Details, Price, Name } from "../../styles/History";
 
 const HistoryItem = ({ name, cost, createDate, img }) => (
   <Item>

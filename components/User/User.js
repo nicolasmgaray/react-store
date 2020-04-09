@@ -1,6 +1,6 @@
 import React from "react";
-import { UserData, PointCounter, Coin } from "./../../../styles/User";
-import Spinner from "../../UI/Spinner";
+import { UserData, PointCounter, Coin } from "./../../styles/User";
+import Spinner from "../UI/Spinner";
 
 const User = ({ username, points, addPoints, isAddingPoints }) => (
   <UserData>

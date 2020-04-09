@@ -1,6 +1,6 @@
 import fetch from "isomorphic-unfetch";
 
-const token = process.env.token_aerolab;
+const token = process.env.TOKEN;
 const baseUrl = "https://aerolab-challenge.now.sh/";
 
 const fetchParams = (method, data = "") => {

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Product from "./ProductItem";
 import { useDispatch } from "react-redux";
-import { actions } from "../../../redux/ducks/User";
+import { actions } from "../../redux/ducks/User";
 import Swal from "sweetalert2";
 
 const ProductContainer = props => {

@@ -11,8 +11,8 @@ import {
   BuyLogo,
   Break,
   Coin
-} from "../../../styles/Products";
-import Ellipse from "../../UI/Ellipse";
+} from "../../styles/Products";
+import Ellipse from "../UI/Ellipse";
 
 const Product = ({
   name,

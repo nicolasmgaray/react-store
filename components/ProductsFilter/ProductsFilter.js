@@ -1,7 +1,7 @@
 import React from "react";
 import { FiltersContainer, ButtonsContainer, SortLabel } from "../../styles/Filters";
-import SortButton from "./SortButton";
-import SearchInput from "./SearchInput";
+import SortButton from "../SortButton";
+import SearchInput from "../SearchInput";
 
 const ProductsFilter = ({
   searchTerm,

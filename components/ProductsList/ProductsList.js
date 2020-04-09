@@ -1,6 +1,6 @@
 import React from "react";
 import { List } from "../../styles/Products";
-import ProductItem from "./ProductItem";
+import ProductItem from "../ProductItem";
 
 const ProductList = ({ products, points }) => (
   <List>

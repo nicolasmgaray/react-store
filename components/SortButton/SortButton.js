@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "../../../styles/Filters";
+import { Button } from "../../styles/Filters";
 
 const SortButton = ({ text, value, handleFilterClick, orderBy }) => (
   <Button

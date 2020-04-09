@@ -1,6 +1,6 @@
 import React from "react";
 import { List } from "../../styles/History";
-import HistoryItem from "./HistoryItem";
+import HistoryItem from "../HistoryItem";
 
 const HistoryList = ({ items }) => {
   return (

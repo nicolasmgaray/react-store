@@ -1,4 +1,4 @@
-# react-store
+# React Store
 
 ![VERSION](https://img.shields.io/github/package-json/v/NICOLASMGARAY/react-store?style=for-the-badge)
 ![STATUS](https://img.shields.io/github/deployments/nicolasmgaray/react-store/production?label=STATUS&logo=zeit&style=for-the-badge)

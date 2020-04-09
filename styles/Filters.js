@@ -5,7 +5,7 @@ const Button = styled.button`
   color: var(--color-gray);
   width: 8em;
   flex: 0 0 8em;
-  margin: 0.5em 0em;
+  margin: 0.5em;
   padding: 0.5em 1em;
   font-size: 0.7em;
   border: 0;

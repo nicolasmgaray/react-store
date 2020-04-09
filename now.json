@@ -1,7 +1,5 @@
-{
-    "build": {
-      "env": {
-        "TOKEN": "@token_aerolab"
-      }
-    }
+{  
+    "env": {
+    "TOKEN": "@token_aerolab"
+    }  
   }

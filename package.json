@@ -20,7 +20,7 @@
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.0.0",
-    "sweetalert2": "^9.7.1"
+    "sweetalert2": "^10.15.5"
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^1.10.7",
